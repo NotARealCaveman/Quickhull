@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Src\Line.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Plane.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Point3.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Point4.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Quickhull.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Simplex.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Vector3.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Vector4.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Core.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Geometry.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\HalfEdgeMesh.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Transform.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Matrix3.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Vector2.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\RNG.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{556c2fe8-22a1-49b7-a2ab-4c2705a73e82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{06b18d2b-d0b6-427c-b71e-32cc06fc2e24}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\DebugLogger.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Geometry.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\HalfEdgeMesh.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Line.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Matrix4.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Plane.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Point3.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Point4.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Quickhull.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Simplex.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Typenames.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Vector3.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Vector4.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Console_Color.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Transform.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Matrix3.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Vector2.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\RNG.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
