@@ -2,6 +2,7 @@
 
 #include "Quickhull.h"
 #include "RNG.h"
+#include "Console_Color.h"
 
 using namespace Manifest_Math;
 
@@ -22,6 +23,8 @@ const std::vector<MFpoint3> pointCloud
 
 int main()
 {
+	Enable_ASCII_Color();
+
 	auto hull{ QuickHull(pointCloud) };	
 	LOG(45, "Press q to quit");
 	LOG(46, "Press a to add point to hull");	
