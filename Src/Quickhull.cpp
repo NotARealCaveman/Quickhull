@@ -167,8 +167,8 @@ void Manifest_Math::BuildNewFaces(HalfEdgeMesh& mesh, HullVertex* const vertex, 
 				//edge begins at eye, find twin edge that terminates at the vertex and begins at the shared horizon vertex
 				if (edge->tail == vertex)
 					return potentialTwin->tail == edge->next->tail;
-				//edge terminates at eye, find twin edge that terminates ate shared horizon vertex beginning from eye
-				return potentialTwin->tail == vertex && potentialTwin->next->tail == edge->tail;
+				//edge terminates at eye, find twin edge that terminates at shared horizon vertex beginning from eye
+				return potentialTwin->next->tail == edge->tail;
 			}) };		
 		if (twin == newEdges.end())
 			return nullptr;
