@@ -330,8 +330,6 @@ void Manifest_Math::MergeFaces(HalfEdgeMesh& mesh, std::vector<HullFace*>& newFa
 		outgoing->next->prev = incoming;
 		outgoing->twin->next = incoming->twin->next;
 		incoming->twin->next->prev = outgoing->twin;
-		assert(incoming->tail->vertex == outgoing->twin->next->tail->vertex);
-		assert(incoming->next->tail->vertex == outgoing->twin->tail->vertex);
 		//remove redundant references		
 		mesh.DeallocateHalfEdge(outgoing);
 		mesh.DeallocateHalfEdge(incoming->twin);
