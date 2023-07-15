@@ -318,8 +318,6 @@ void Manifest_Math::MergeFaces(HalfEdgeMesh& mesh, std::vector<HullFace*>& newFa
 	const auto& TopologicalCorection2 = [&](HullHalfEdge* incoming, HullHalfEdge* outgoing)
 	{
 		DLOG(35, "Topological violation 2 on incoming: " << incoming << " and outgoing: " << outgoing << " face: " << incoming->face << " neighbor: " << incoming->twin->face);
-		PrintFace(incoming->face);
-		PrintFace(incoming->twin->face);
 		auto face{ incoming->face };
 		face->edge = incoming->prev;
 		//stretch incoming to old outgoing next
