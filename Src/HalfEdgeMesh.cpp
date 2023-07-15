@@ -21,6 +21,7 @@ MFbool Manifest_Math::UntrackEdge(HullHalfEdge* edge)
 
 void Manifest_Math::PrintFace(const HullFace* const face)
 {
+#ifdef DEBUG
 	DLOG(43, "printing vertices of face: " << face);
 	auto edge{ face->edge };
 	do
@@ -28,6 +29,7 @@ void Manifest_Math::PrintFace(const HullFace* const face)
 		DLOG(37, edge->tail->vertex);
 		edge = edge->next;
 	} while (edge != face->edge);
+#endif // DEBUG
 }
 
 std::vector<HullHalfEdge*> Manifest_Math::GetFaceEdges(const HullFace* const face)
