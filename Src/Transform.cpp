@@ -140,6 +140,17 @@ MFpoint3 Manifest_Math::operator*(const MFtransform& hA, const MFpoint3& p)
 		hA(2,0) * p.x + hA(2,1) * p.y + hA(2,2) * p.z + hA(2,3)
 	};
 }
+
+MFpoint3 Manifest_Math::operator*(const MFtransform& hA, const MFvec3& v)
+{
+	return MFpoint3
+	{
+		hA(0,0) * v.x + hA(0,1) * v.y + hA(0,2) * v.z,
+		hA(1,0) * v.x + hA(1,1) * v.y + hA(1,2) * v.z,
+		hA(2,0) * v.x + hA(2,1) * v.y + hA(2,2) * v.z
+	};
+}
+
 MFvec3 Manifest_Math::operator*(const MFvec3& n, const MFtransform& hB)
 {
 	return MFvec3

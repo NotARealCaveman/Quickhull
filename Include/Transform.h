@@ -33,8 +33,10 @@ namespace Manifest_Math
 	MFmat3 NormalMatrix(const MFtransform& transform);//returns inverse tranpose 3x3 of the transform
 	//transforms coord sys A to coord sys B
 	MFtransform operator*(const MFtransform& hA, const MFtransform& hB);
-	//represents the transformation of a point in somes local sys to sys A, h*p
+	//represents the transformation of a point in some local sys to sys A, h*p
 	MFpoint3 operator*(const MFtransform& hA, const MFpoint3& p);
+	//represents the transformation of a vector in some local sys to sys A, h*p
+	MFpoint3 operator*(const MFtransform& hA, const MFvec3& v);
 	//represents the transformation of a normal in sys B to sys A, v*h
 	MFvec3 operator*(const MFvec3& n, const MFtransform& hB);
 	//converts a vector created with a Y-up to a Z up
