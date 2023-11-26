@@ -69,6 +69,7 @@ namespace Manifest_Math
 			HullVertex* vertices{ nullptr };			
 			HullFace* faces{ nullptr };
 			MFsize vertexCount;
+			/*!!!THIS IS CURRENTLY BUGGED - EDGE COUNT NOT CORRECT*/
 			MFsize edgeCount;
 			MFsize faceCount;
 			MFfloat CONVEXITY_EPSILON{ FLT_EPSILON };				
