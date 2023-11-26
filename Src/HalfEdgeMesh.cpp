@@ -83,8 +83,8 @@ MFplane Manifest_Math::NewellPlane(const MFu32& planarEdgeCount, const HullFace*
 		normal.z += (currentVertex.x - nextVertex.x) * (currentVertex.y + nextVertex.y);
 		planarEdge = planarEdge->next;
 	}
-	normal = Normalize(normal);
 	const auto offset{ Dot(-normal,planarFace->edge->tail->vertex) };
+	normal = Normalize(normal);	
 	return MFplane{ normal,offset };
 }
 
