@@ -39,24 +39,24 @@ void MFtransform::SetTranslation(const MFpoint3& translation)
 MFtransform Manifest_Math::Inverse(const MFtransform& hA)
 {
 	//grab 3D C-Vectors of M4x3
-	const auto& a = reinterpret_cast<const MFvec3&>(hA[0]);
-	const auto& b = reinterpret_cast<const MFvec3&>(hA[1]);
-	const auto& c = reinterpret_cast<const MFvec3&>(hA[2]);
-	const auto& d = reinterpret_cast<const MFvec3&>(hA[3]);
+	const MFvec3& a = reinterpret_cast<const MFvec3&>(hA[0]);
+	const MFvec3& b = reinterpret_cast<const MFvec3&>(hA[1]);
+	const MFvec3& c = reinterpret_cast<const MFvec3&>(hA[2]);
+	const MFvec3& d = reinterpret_cast<const MFvec3&>(hA[3]);
 
 	//create 0 vector once, when crossed in 3d all vectors are parallel to 0,0,0
 	//Cross product of parallel vectors is a 0 vector
-	auto s = Cross(a, b);//returns vector perpendicular to vectors a&b
-	auto t = Cross(c, d);//returns vector perpendicular to vectors c&d
+	MFvec3 s = Cross(a, b);//returns vector perpendicular to vectors a&b
+	MFvec3 t = Cross(c, d);//returns vector perpendicular to vectors c&d
 
 	MFfloat iDet = 1.0f / Dot(s, c);
 	//create inverse scalars
 	s *= iDet;
 	t *= iDet;
-	const auto& v = c * iDet;
+	const MFvec3 v = c * iDet;
 	//using inverse scalars, calculate inverse row vectors
-	const auto& r0 = Cross(b, v);
-	const auto& r1 = Cross(v, a);
+	const MFvec3 r0 = Cross(b, v);
+	const MFvec3 r1 = Cross(v, a); 
 	
 	return MFtransform
 	{
@@ -72,30 +72,27 @@ MFtransform Manifest_Math::Inverse(const MFtransform& hA)
 MFmat3 Manifest_Math::NormalMatrix(const MFtransform& hA)
 {
 	//grab 3D C-Vectors of M4x3
-	const auto& a = reinterpret_cast<const MFvec3&>(hA[0]);
-	const auto& b = reinterpret_cast<const MFvec3&>(hA[1]);
-	const auto& c = reinterpret_cast<const MFvec3&>(hA[2]);
-	const auto& d = reinterpret_cast<const MFvec3&>(hA[3]);
+	const MFvec3& a = reinterpret_cast<const MFvec3&>(hA[0]);
+	const MFvec3& b = reinterpret_cast<const MFvec3&>(hA[1]);
+	const MFvec3& c = reinterpret_cast<const MFvec3&>(hA[2]);
+	const MFvec3& d = reinterpret_cast<const MFvec3&>(hA[3]);
 	//4th row vector of M4 is assumed to be
 	//const MFvec4& p{ 0.0,0.0,0.0,1.0f}; 
 
 
-	auto s = Cross(a, b);//returns vector perpendicular to vectors a&b
-	auto t = Cross(c, d);//returns vector perpendicular to vectors c&d
-	//const auto& u = zero; a * p.y - b * p.x; 0+0
-	//auto v = c;// *p.w - d * p.z; c*1+0
+	MFvec3 s = Cross(a, b);//returns vector perpendicular to vectors a&b
+	MFvec3 t = Cross(c, d);//returns vector perpendicular to vectors c&d	
+	
 
 	MFfloat iDet = 1.0f / Dot(s, c);// +Dot(t, u); t*0
 	//create inverse scalars
 	s *= iDet;
 	t *= iDet;
 	//0=u *= iDet;
-	const auto& v = c * iDet;
+	const MFvec3 v = c * iDet;
 	//using inverse scalars, calculate inverse row vectors
-	const auto& r0 = Cross(b, v);// + t * p.y; +0
-	const auto& r1 = Cross(v, a);// - t * p.x; -0
-	//const auto& r2 = s;//Cross(d, u) + s *p.w; 0 + s * 1 = s
-	//const auto& r3 = zero;//Cross(u, d) -s * p.z;0 - 0 = 0
+	const MFvec3 r0 = Cross(b, v);// + t * p.y; +0
+	const MFvec3 r1 = Cross(v, a);// - t * p.x; -0		
 
 	//returns the tranpose of the inverse
 	//vectors are row vectors, ctor expects column major coordinates

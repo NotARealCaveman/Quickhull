@@ -4,7 +4,7 @@ using namespace Manifest_Math;
 
 void Manifest_Math::swap(MFvec3& a, MFvec3& b)
 {
-	const auto t{ b };
+	const MFvec3 t{ b };
 	b = a;
 	a = t;
 }
@@ -69,9 +69,9 @@ MFvec3 Manifest_Math::AxisAngleToEuler(const MFvec3& axis, const MFfloat& theta)
 {
 	MFvec3 euler;//pitch-yaw-roll
 
-	const auto& s = sinf(theta);
-	const auto& c = cosf(theta);
-	const auto& t = 1.0f - c;
+	const MFfloat s = sinf(theta);
+	const MFfloat c = cosf(theta);
+	const MFfloat t = 1.0f - c;
 	//axis is assumed to be normalized, if not normalized, normalized before passing in
 	if ((axis.x * axis.y * t + axis.z * s) > 0.998f) { // north pole singularity detected
 		euler.y = 2 * atan2f(axis.x * sinf(theta / 2), cosf(theta / 2));

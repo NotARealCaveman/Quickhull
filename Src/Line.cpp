@@ -4,36 +4,36 @@ using namespace Manifest_Math;
 
 const MFfloat Manifest_Math::DistancePointLine(const MFpoint3& q, const MFpoint3& l, const MFvec3& v)
 {
-	const auto& cUV = Cross(q - l, v);
+	const MFvec3 cUV = Cross(q - l, v);
 
 	return std::sqrtf(Dot(cUV, cUV) / Dot(v, v));
 };
 
 const MFfloat Manifest_Math::NDistancePointLine(const MFpoint3& q, const MFpoint3& l, const MFvec3& v)
 {
-	const auto& cUV = Cross(q - l, v);
+	const MFvec3 cUV = Cross(q - l, v);
 
 	return std::sqrtf(Dot(cUV, cUV));// / Dot(v, v)); v has unit length
 };
 
 const MFfloat Manifest_Math::DistanceLineLine(const MFpoint3& p1, const MFvec3 v1, const MFpoint3& p2, const MFvec3& v2)
 {
-	const auto& distP = p2 - p1;
+	const MFvec3 distP = p2 - p1;
 
-	const auto& v12 = Dot(v1, v1);
-	const auto& v22 = Dot(v2, v2);
-	const auto& v1v2 = Dot(v1, v2);
+	const MFfloat v12 = Dot(v1, v1);
+	const MFfloat v22 = Dot(v2, v2);
+	const MFfloat v1v2 = Dot(v1, v2);
 
-	auto&& det = v1v2 * v1v2 - v12 * v22;
+	MFfloat det = v1v2 * v1v2 - v12 * v22;
 
 	if (std::fabs(det) > FLT_MIN)//a*b = 0 ; lines are parrallel
 	{
 		det = 1.0f / det;
 
-		const auto& distPv1 = Dot(distP, v1);
-		const auto& distPv2 = Dot(distP, v2);
-		const auto& t1 = (v1v2 * distPv2 - v22 * distPv1) * det;
-		const auto& t2 = (v12 * distPv2 - v1v2 * distPv1) * det;
+		const MFfloat distPv1 = Dot(distP, v1);
+		const MFfloat distPv2 = Dot(distP, v2);
+		const MFfloat t1 = (v1v2 * distPv2 - v22 * distPv1) * det;
+		const MFfloat t2 = (v12 * distPv2 - v1v2 * distPv1) * det;
 
 		return Magnitude(distP + v2 * t2 - v1 * t1);
 	}//lines are almost parallel
@@ -70,10 +70,10 @@ MFline Manifest_Math::Transform(const MFline& l, const MFtransform& hA)
 		Cross(hA[2],hA[0]),
 		Cross(hA[0],hA[1])
 	};
-	const auto& t = hA.GetTranslation();
+	const MFpoint3& t = hA.GetTranslation();
 
-	const auto& v = hA * l.v;
-	const auto& m = adjugate * l.m + Cross(t, v);
+	const MFpoint3 v = hA * l.v;
+	const MFvec3 m = adjugate * l.m + Cross(t, v);
 
 	return MFline{ v,m };
 }
@@ -83,10 +83,10 @@ MFline Manifest_Math::Transform(const MFline& l, const MFtransform& hA)
 //(MFmat3)H->0.037μs, adj(M)->0.199μs
 MFline Manifest_Math::TransformOrthonormal(const MFline& l, const MFtransform& hA)
 {		
-	const auto& t = hA.GetTranslation();
+	const MFpoint3& t = hA.GetTranslation();
 
-	const auto& v = hA * l.v;
-	const auto& m = static_cast<const MFmat3>(hA) * l.m + Cross(t, v);
+	const MFpoint3 v = hA * l.v;
+	const MFvec3 m = static_cast<const MFmat3>(hA) * l.m + Cross(t, v);
 
 	return MFline{ v,m };
 }
